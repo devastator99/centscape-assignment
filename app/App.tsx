@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as Linking from 'expo-linking';
@@ -24,9 +24,27 @@ const linking = {
 };
 
 export default function App() {
+  const [ready, setReady] = useState(false);
+
   useEffect(() => {
-    initDB().catch((e) => console.error('DB init failed', e));
+    (async () => {
+      try {
+        await initDB();
+      } catch (e) {
+        console.error('DB init failed', e);
+      } finally {
+        setReady(true);
+      }
+    })();
   }, []);
+
+  if (!ready) {
+    return (
+      <React.Fragment>
+        {/* Simple splash while DB initializes */}
+      </React.Fragment>
+    );
+  }
 
   return (
     <NavigationContainer linking={linking}>

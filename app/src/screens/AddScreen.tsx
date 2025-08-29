@@ -45,8 +45,18 @@ export default function AddScreen() {
       setPreview(data);
     } catch (e: any) {
       console.error('Preview fetch error:', e);
-      const errorMsg = e.message ?? 'Fetch failed';
-      setError(`Failed to fetch preview: ${errorMsg}`);
+      let errorMsg = e.message ?? 'Fetch failed';
+      
+      // Handle specific error cases with clearer messaging
+      if (errorMsg.includes('maxContentLength') || errorMsg.includes('524288')) {
+        errorMsg = 'Page too large (>512KB). Try a different product URL or a more specific product page.';
+      } else if (errorMsg.includes('timeout')) {
+        errorMsg = 'Request timed out. Check your connection and try again.';
+      } else if (errorMsg.includes('Network')) {
+        errorMsg = 'Network error. Check your connection and try again.';
+      }
+      
+      setError(errorMsg);
     } finally {
       setLoading(false);
     }
@@ -87,9 +97,12 @@ export default function AddScreen() {
       <Button title="Fetch Preview" onPress={() => handleFetch()} accessibilityLabel="Fetch preview button" />
       {loading && <ActivityIndicator style={{ marginTop: 12 }} />}
       {error && (
-        <View style={{ marginTop: 12 }}>
-          <Text style={{ color: 'red' }}>{error}</Text>
-          <Button title="Retry" onPress={() => handleFetch()} accessibilityLabel="Retry fetch button" />
+        <View style={{ marginTop: 12, padding: 12, backgroundColor: '#fff3cd', borderRadius: 8, borderWidth: 1, borderColor: '#ffeaa7' }}>
+          <Text style={{ color: '#856404', marginBottom: 8 }}>{error}</Text>
+          <View style={{ flexDirection: 'row', gap: 8 }}>
+            <Button title="Retry" onPress={() => handleFetch()} accessibilityLabel="Retry fetch button" />
+            <Button title="Clear" onPress={() => { setError(null); setUrl(''); }} color="#6c757d" accessibilityLabel="Clear and try different URL" />
+          </View>
         </View>
       )}
       {preview && (
