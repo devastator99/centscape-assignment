@@ -1,0 +1,29 @@
+# Root .gitignore for monorepo
+
+# Node
+node_modules/
+app/node_modules/
+server/node_modules/
+
+# Expo local state (keep out of VCS)
+app/.expo/
+
+# Build artifacts
+app/dist/
+app/web-build/
+
+# OS junk
+.DS_Store
+
+# Logs
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# Env
+*.pem
+app/.env*.local
+
+# TypeScript
+app/*.tsbuildinfo
+server/*.tsbuildinfo

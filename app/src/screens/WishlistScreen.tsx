@@ -38,7 +38,7 @@ export default function WishlistScreen({ navigation }: any) {
         renderItem={({ item }) => (
           <View style={{ flexDirection: 'row', padding: 12, borderBottomWidth: 1, borderColor: '#eee' }}>
             <Image
-              source={ item.image ? { uri: item.image } : require('../assets/fallback.png') }
+              source={ item.image ? { uri: item.image } : require('../../assets/fallback.png') }
               style={{ width: 80, height: 80, marginRight: 12, backgroundColor: '#f4f4f4' }}
               onError={() => {/* fallback handled by source */}}
               accessibilityLabel={`Image of ${item.title ?? 'item'}`}
