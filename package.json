@@ -1,0 +1,15 @@
+{
+  "name": "centscape-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "workspaces": ["app", "server"],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "verify": "npm run lint --workspaces && npm run typecheck --workspaces && npm test --workspaces" 
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
