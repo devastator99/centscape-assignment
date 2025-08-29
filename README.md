@@ -33,6 +33,10 @@ A React Native + Expo TypeScript app with Node.js backend for creating and manag
 ```bash
 git clone <repository-url>
 cd centscape-assignment
+cd server
+npm install
+cd ..
+cd app
 npm install
 ```
 
@@ -160,41 +164,3 @@ The app supports deep linking with the `centscape://` scheme:
 1. **URL Logging**: Server may log requested URLs in access logs
 2. **Local Storage**: All data stored locally on device
 3. **No Analytics**: No usage tracking implemented
-
-## AI Usage Disclosure
-
-This project was developed with AI assistance for the following components:
-
-### Code Generation (80% AI-assisted)
-- **React Native Components**: Screen layouts, navigation setup, database schema
-- **Server Routes**: Fastify route handlers, middleware configuration
-- **Utility Functions**: URL normalization, HTML parsing, IP validation
-- **Test Cases**: Jest test suites with fixtures and edge cases
-
-### Architecture & Design (60% AI-assisted)
-- **Database Schema**: SQLite table design and migration strategy
-- **API Design**: REST endpoint structure and error handling
-- **Security Patterns**: SSRF protection, rate limiting implementation
-- **TypeScript Types**: Interface definitions and type safety
-
-### Documentation (90% AI-assisted)
-- **README Structure**: Setup instructions, API documentation
-- **Code Comments**: Function documentation and inline explanations
-- **JSON Schemas**: Request/response validation schemas
-
-### Human Contributions
-- **Requirements Analysis**: Understanding assignment specifications
-- **Testing Strategy**: Manual testing and validation approach  
-- **Configuration Decisions**: Timeout values, size limits, rate limits
-- **Error Handling**: User-facing error messages and retry logic
-
-### AI Tools Used
-- **Code Completion**: GitHub Copilot for boilerplate and patterns
-- **Documentation**: ChatGPT for README structure and explanations
-- **Debugging**: AI assistance for troubleshooting configuration issues
-
-The AI assistance significantly accelerated development while maintaining code quality and following best practices. All AI-generated code was reviewed and tested before inclusion.
-
-## License
-
-ISC
