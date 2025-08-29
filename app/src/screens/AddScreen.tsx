@@ -44,7 +44,9 @@ export default function AddScreen() {
       const data = await res.json();
       setPreview(data);
     } catch (e: any) {
-      setError(e.message ?? 'Fetch failed');
+      console.error('Preview fetch error:', e);
+      const errorMsg = e.message ?? 'Fetch failed';
+      setError(`Failed to fetch preview: ${errorMsg}`);
     } finally {
       setLoading(false);
     }

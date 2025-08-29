@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Wishlist Item Schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the wishlist item"
+    },
+    "title": {
+      "type": ["string", "null"],
+      "description": "The title of the item"
+    },
+    "image": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL of the item image"
+    },
+    "price": {
+      "type": ["string", "null"],
+      "description": "The price as a string"
+    },
+    "currency": {
+      "type": ["string", "null"],
+      "description": "The currency symbol or code"
+    },
+    "siteName": {
+      "type": ["string", "null"],
+      "description": "The name of the website/domain"
+    },
+    "sourceUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The original URL of the item"
+    },
+    "normalizedUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "The normalized URL for deduplication"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO timestamp when the item was added"
+    }
+  },
+  "required": ["id", "sourceUrl", "createdAt"],
+  "additionalProperties": false
+}

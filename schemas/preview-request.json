@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Preview Request Schema",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL to fetch and preview"
+    },
+    "raw_html": {
+      "type": "string",
+      "description": "Optional raw HTML content to parse instead of fetching from URL"
+    }
+  },
+  "required": ["url"],
+  "additionalProperties": false
+}

@@ -8,12 +8,13 @@ const axios = require('axios');
 async function fetchHTML(url: string): Promise<string> {
   try {
     const response = await axios.get(url, {
-      timeout: 5000,              // ≤5s
-      maxRedirects: 3,            // max 3 redirects
+      timeout: 5000,               // ≤5s as required
+      maxRedirects: 3,            // max 3 redirects as required
       headers: { 'User-Agent': 'CentscapeBot/1.0' },
       responseType: 'text',
       validateStatus: (status: number) => status === 200,
-      maxContentLength: 512 * 1024 // 512 KB
+      maxContentLength: 512 * 1024, // 512 KB as required
+      maxBodyLength: 512 * 1024     // 512 KB as required
     });
 
     if (!response.headers['content-type']?.includes('text/html')) {

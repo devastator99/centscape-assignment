@@ -7,10 +7,16 @@ const ipaddr = require('ipaddr.js');
  */
 function isPrivateIP(hostname: string): boolean {
   try {
+    // Check for localhost variations
+    if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1') {
+      return true;
+    }
+    
     const addr = ipaddr.parse(hostname);
     return addr.range() !== 'unicast';
   } catch (e) {
-    return false;
+    // If parsing fails, check for localhost string
+    return hostname.toLowerCase() === 'localhost';
   }
 }
 

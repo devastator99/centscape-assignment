@@ -1,33 +1,14 @@
-const Fastify = require('fastify');
-const rateLimit = require('@fastify/rate-limit');
-const { previewRoute } = require('./routes/preview');
-
-const fastify = Fastify({ logger: true });
-
-// Rate limit: 10 req/min per IP
-fastify.register(rateLimit, {
-  max: 10,
-  timeWindow: '1 minute'
-});
-
-// Register routes
-fastify.register(previewRoute);
-
-// Root route for quick check
-fastify.get('/', async (_request: any, reply: any) => {
-  return reply.send({
-    status: 'ok',
-    service: 'centscape-server',
-    message: 'Use POST /preview with { url, raw_html? } to get a preview.'
-  });
-});
+const { build } = require('./app');
 
 const start = async () => {
   try {
-    await fastify.listen({ port: 3000 });
-    console.log('Server running at http://localhost:3000');
+    const fastify = build({ logger: true });
+    const port = Number(process.env.PORT) || 3000;
+    const host = '0.0.0.0';
+    await fastify.listen({ port, host });
+    console.log(`Server running at http://${host}:${port}`);
   } catch (err) {
-    fastify.log.error(err);
+    console.error(err);
     process.exit(1);
   }
 };

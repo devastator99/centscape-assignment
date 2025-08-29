@@ -35,6 +35,15 @@ export default function WishlistScreen({ navigation }: any) {
         keyExtractor={(it) => String(it.id)}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}
         ListEmptyComponent={() => <Text style={{ padding: 16 }}>No items yet. Add one from the Add screen.</Text>}
+        removeClippedSubviews={true}
+        maxToRenderPerBatch={10}
+        windowSize={10}
+        initialNumToRender={10}
+        getItemLayout={(data, index) => ({
+          length: 104, // approximate height of each item
+          offset: 104 * index,
+          index,
+        })}
         renderItem={({ item }) => (
           <View style={{ flexDirection: 'row', padding: 12, borderBottomWidth: 1, borderColor: '#eee' }}>
             <Image
