@@ -3,9 +3,9 @@
 A React Native + Expo TypeScript app with Node.js backend for creating and managing product wishlists with URL preview functionality.
 
 ### UI Preview
-![Demo 1](./app/assets/demo1.png)
-![Demo 2](./app/assets/demo2.png)
-![Demo 3](./app/assets/demo3.png)
+<img src="./app/assets/demo1.png" width="300" alt="Demo 1" />
+<img src="./app/assets/demo2.png" width="300" alt="Demo 2" />
+<img src="./app/assets/demo3.png" width="300" alt="Demo 3" />
 
 ## Features
 
